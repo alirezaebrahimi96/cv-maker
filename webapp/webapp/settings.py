@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$h2g=fboxvmdx-#b2q+e6k)7wa(lov$h=-%4ts*uu!v(zb2$o4
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_URL = 'users:login'
 
 # Application definition
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cv',
+    'users',
+    'learning_logs'
 ]
 
 MIDDLEWARE = [
