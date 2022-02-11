@@ -39,3 +39,4 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {
         'form': form
     })
+    
