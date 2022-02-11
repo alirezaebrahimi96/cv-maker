@@ -9,4 +9,12 @@
     <a href="{% url 'users:login' %}">Log i<a href="{% url 'users:logout' %}">Log out</a>n</a>
     {% endif %}
     </p>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
     {% block content %}{% endblock content %}
