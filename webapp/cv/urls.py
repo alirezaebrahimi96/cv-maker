@@ -1,9 +1,11 @@
 from django.urls import path
-
-from . import  views
+from .views import  aboutme, index, pic
 
 app_name = 'cv'
 
 urlpatterns = [
-        path('', views.index, name='index'),
+        path('', index, name='index'),
+        path('aboutme/', aboutme.as_view(), name='aboutme'),
+        path('pic/', pic.as_view(), name='pic'),
+
 ]
