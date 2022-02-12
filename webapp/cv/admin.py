@@ -15,6 +15,7 @@ admin.site.register(Courses)
 admin.site.register(Projects)
 admin.site.register(BooksandArticles)
 admin.site.register(Contact)
+admin.site.register(pic)
 
 
 admin.site.register(CV)

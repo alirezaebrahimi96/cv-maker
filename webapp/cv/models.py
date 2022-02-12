@@ -79,6 +79,7 @@ software_level = (
 )
 
 
+    
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
         self.min_value, self.max_value = min_value, max_value
@@ -88,18 +89,22 @@ class IntegerRangeField(models.IntegerField):
         defaults.update(kwargs)
         return super(IntegerRangeField, self).formfield(**defaults)
 
+class pic(models.Model):
+    picture = models.ImageField(upload_to='archivos')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=User)
 
 class AboutMe(models.Model):
     first_name = models.CharField(max_length=150, null=True)
     last_name = models.CharField(max_length=150, null=True)
     job_title = models.CharField(max_length=150, null=True)
     about = models.CharField(max_length=500, null=True)
-    picture = models.ImageField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-
+    picture = models.ForeignKey(pic, on_delete=models.CASCADE, null=True, default=pic)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=User)
+    
     def __str__(self):
         return self.first_name + self.last_name + " " + self.job_title
 
+    
 class PrimaryInfo(models.Model):
     first_name = models.ForeignKey(AboutMe, related_name='f_name', on_delete=models.CASCADE)
     last_name = models.ForeignKey(AboutMe, related_name='l_name', on_delete=models.CASCADE)
@@ -237,6 +242,7 @@ class CV(models.Model):
 
     def __str__(self):
         return self.title
+
 
 
 class Show(models.Model):
